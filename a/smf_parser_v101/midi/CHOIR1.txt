@@ -1,0 +1,43 @@
+smf_parser v1.01
+Created by Joan Quintana Compte (joanillo)
+Licensed under GPL v.3
+
+format type: 1
+number of tracks: 2
+time division in ticks per beat (0)
+Ticks per beat: 120
+track #1
+track size: 53
+Channel Event. t= 0 (0) 
+Meta Event. Type: 0x51 (81dec), Set Tempo (3 bytes): 138 bpm
+Channel Event. t= 0 (0) 
+Meta Event. Type: 0x58 (88dec), Time Signature (4 bytes): 4 / 4
+Channel Event. t= 0 (0) 
+Meta Event. Type: 0x7f (127dec), Sequencer-Specific Meta-Event (10 bytes): X0 X0 X5b X23 X2 X0 X3 X0 X33 X0 
+Channel Event. t= 0 (0) 
+Meta Event. Type: 0x21 (33dec), MIDI Port (1 bytes): 0
+Channel Event. t= 0 (0) 
+Meta Event. Type: 0x51 (81dec), Set Tempo (3 bytes): 80 bpm
+Channel Event. t= 0 (0) 
+Meta Event. Type: 0x58 (88dec), Time Signature (4 bytes): 4 / 4
+Channel Event. t= 0 (0) 
+Meta Event. Type: 0x2f (47dec), End of Track (0 bytes): 
+track #2
+track size: 258
+Channel Event. t= 0 (0) 
+Meta Event. Type: 0x21 (33dec), MIDI Port (1 bytes): 0
+Channel Event. t= 0 (0) 
+SysEx Event.  (137 bytes): X41 X10 X42 X12 X48 X2 X70 X0 X0 X3 X4 Xf Xf Xf Xf X0 X0 X8 X1 X4 X0 X8 X0 X6 X4 X4 X0 X4 X0 X4 X0 X0 X0 X7 Xf X1 Xa X7 Xf X4 X0 X4 X0 X4 X0 X4 X0 X4 X8 X5 Xa X5 X4 X4 X0 X0 X0 X0 X0 X4 X0 X4 X0 X4 X0 X4 X0 X4 X0 X4 X0 X4 X0 X4 X0 X4 X0 X4 X0 X4 X0 X4 X0 X1 X0 X1 X1 X4 X0 X4 X0 X4 X0 X0 X0 X4 X0 X0 Xa X0 X0 X0 X0 X4 X0 X0 X0 X0 X0 X0 X0 X4 X2 X4 X0 X4 X0 X0 X0 X4 X0 X0 X0 X0 X0 X0 X0 X4 X0 X0 X0 X0 X0 X0 X0 X2 Xfffffff7 
+Channel Event. t= 10 (10) 
+SysEx Event.  (105 bytes): X41 X10 X42 X12 X48 X3 X70 X4 X0 X4 X0 X4 X0 X4 X0 X4 X0 X0 X0 X0 X0 X0 X0 X4 X0 X0 X0 X0 X0 X0 X0 X4 X0 X4 X0 X4 X0 X4 X0 X4 X0 X0 X0 X0 X0 X0 X0 X4 X0 X0 X0 X0 X0 X0 X0 X4 X0 X4 X0 X4 X0 X0 X0 X4 X0 X0 X0 X0 X0 X0 X0 X4 X0 X0 X0 X0 X0 X0 X0 X4 X0 X4 X0 X4 X0 X0 X0 X4 X0 X0 X0 X0 X0 X0 X0 X4 X0 X0 X0 X0 X0 X0 X0 X6d Xfffffff7 
+Channel Event. t= 0 (10) 
+End of file
+
+ABSTRACT: 
+---------
+SMF: ../midi/CHOIR1.MID
+Format type: 1
+Time division: 0 (ticks_per_beat)
+Number of tracks: 2
+ticks_per_beat: 120
+Number of bars: Time Signature changes over time (TO DO)

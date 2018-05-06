@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib>
+#include <smf.h>
 #include "RtMidi.h"
 
 static std::string outClientName = std::string("MKT Output Client");
@@ -53,42 +54,6 @@ void listMidiPort (std::string inPortName, int * inPortIndex, std::string outPor
 	}
 }
 
-struct smf {
-	char * type;
-	int length;
-	int format;
-	int trackCount;
-	int unit;
-	track * tracks;
-};
-
-struct track {
-	char * type;
-	int length;
-	note * notes;
-	int noteCount;
-};
-
-struct note {
-	int  timing;
-	std::vector<unsigned char> *message;
-};
-
-smf parseMidi(string filepath) {
-	FILE* stream = fopen(filepath, "r");
-	if (stream == NULL) {
-		std::cout << "Error: Open midi file" << std::endl;
-		return NULL;
-	}
-
-	char file_type[4];
-	fread(buffer, sizeof(*buffer), 4, stream);
-	type = file_type;
-	
-
-	fclose(stream);
-}
-
 
 int main()
 {
@@ -115,6 +80,23 @@ int main()
 	}
 	midiin->openPort(inPort, inPortName);
 	midiin->setCallback(&mycallback, midiout);
+
+	//
+	std::vector<std::string> files = {
+		"magic_music.mid"
+	};
+
+	for (unsigned int i=0; i<sizeof(files); i++) {
+		smf_t * smf = smf_load(files[i].c_str());
+		smf_event_t * event;
+		if (smf == NULL) {
+			std::cout << "Loading SMF file failed: " << files[i] << std::endl;
+			continue;
+		}
+		while ((event = smf_get_next_event(smf)) != NULL) {
+			printf("%d ", event->track->track_number);
+		}
+	}
 
 	// Don't ignore sysex, timing, or active sensing messages.
 	midiin->ignoreTypes( false, false, false );

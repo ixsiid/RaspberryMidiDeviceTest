@@ -1,0 +1,454 @@
+SmfParser.cpp: In member function ‘void SmfParser::dump()’:
+SmfParser.cpp:65:10: error: no match for ‘operator==’ (operand types are ‘std::ifstream {aka std::basic_ifstream<char>}’ and ‘int’)
+  if (ofs == NULL) {
+          ^
+SmfParser.cpp:65:10: note: candidate: operator==(int, int) <built-in>
+SmfParser.cpp:65:10: note:   no known conversion for argument 1 from ‘std::ifstream {aka std::basic_ifstream<char>}’ to ‘int’
+In file included from /usr/include/c++/6/iosfwd:40:0,
+                 from /usr/include/c++/6/ios:38,
+                 from /usr/include/c++/6/istream:38,
+                 from /usr/include/c++/6/fstream:38,
+                 from SmfParser.cpp:6:
+/usr/include/c++/6/bits/postypes.h:216:5: note: candidate: template<class _StateT> bool std::operator==(const std::fpos<_StateT>&, const std::fpos<_StateT>&)
+     operator==(const fpos<_StateT>& __lhs, const fpos<_StateT>& __rhs)
+     ^~~~~~~~
+/usr/include/c++/6/bits/postypes.h:216:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/string.h:32:0,
+                 from SmfParser.cpp:9:
+SmfParser.cpp:65:13: note:   ‘std::ifstream {aka std::basic_ifstream<char>}’ is not derived from ‘const std::fpos<_StateT>’
+  if (ofs == NULL) {
+             ^
+In file included from /usr/include/c++/6/bits/stl_algobase.h:64:0,
+                 from /usr/include/c++/6/bits/char_traits.h:39,
+                 from /usr/include/c++/6/ios:40,
+                 from /usr/include/c++/6/istream:38,
+                 from /usr/include/c++/6/fstream:38,
+                 from SmfParser.cpp:6:
+/usr/include/c++/6/bits/stl_pair.h:435:5: note: candidate: template<class _T1, class _T2> constexpr bool std::operator==(const std::pair<_T1, _T2>&, const std::pair<_T1, _T2>&)
+     operator==(const pair<_T1, _T2>& __x, const pair<_T1, _T2>& __y)
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_pair.h:435:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/string.h:32:0,
+                 from SmfParser.cpp:9:
+SmfParser.cpp:65:13: note:   ‘std::ifstream {aka std::basic_ifstream<char>}’ is not derived from ‘const std::pair<_T1, _T2>’
+  if (ofs == NULL) {
+             ^
+In file included from /usr/include/c++/6/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/6/bits/char_traits.h:39,
+                 from /usr/include/c++/6/ios:40,
+                 from /usr/include/c++/6/istream:38,
+                 from /usr/include/c++/6/fstream:38,
+                 from SmfParser.cpp:6:
+/usr/include/c++/6/bits/stl_iterator.h:292:5: note: candidate: template<class _Iterator> bool std::operator==(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_Iterator>&)
+     operator==(const reverse_iterator<_Iterator>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_iterator.h:292:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/string.h:32:0,
+                 from SmfParser.cpp:9:
+SmfParser.cpp:65:13: note:   ‘std::ifstream {aka std::basic_ifstream<char>}’ is not derived from ‘const std::reverse_iterator<_Iterator>’
+  if (ofs == NULL) {
+             ^
+In file included from /usr/include/c++/6/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/6/bits/char_traits.h:39,
+                 from /usr/include/c++/6/ios:40,
+                 from /usr/include/c++/6/istream:38,
+                 from /usr/include/c++/6/fstream:38,
+                 from SmfParser.cpp:6:
+/usr/include/c++/6/bits/stl_iterator.h:349:5: note: candidate: template<class _IteratorL, class _IteratorR> bool std::operator==(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_IteratorR>&)
+     operator==(const reverse_iterator<_IteratorL>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_iterator.h:349:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/string.h:32:0,
+                 from SmfParser.cpp:9:
+SmfParser.cpp:65:13: note:   ‘std::ifstream {aka std::basic_ifstream<char>}’ is not derived from ‘const std::reverse_iterator<_Iterator>’
+  if (ofs == NULL) {
+             ^
+In file included from /usr/include/c++/6/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/6/bits/char_traits.h:39,
+                 from /usr/include/c++/6/ios:40,
+                 from /usr/include/c++/6/istream:38,
+                 from /usr/include/c++/6/fstream:38,
+                 from SmfParser.cpp:6:
+/usr/include/c++/6/bits/stl_iterator.h:1113:5: note: candidate: template<class _IteratorL, class _IteratorR> bool std::operator==(const std::move_iterator<_IteratorL>&, const std::move_iterator<_IteratorR>&)
+     operator==(const move_iterator<_IteratorL>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_iterator.h:1113:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/string.h:32:0,
+                 from SmfParser.cpp:9:
+SmfParser.cpp:65:13: note:   ‘std::ifstream {aka std::basic_ifstream<char>}’ is not derived from ‘const std::move_iterator<_IteratorL>’
+  if (ofs == NULL) {
+             ^
+In file included from /usr/include/c++/6/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/6/bits/char_traits.h:39,
+                 from /usr/include/c++/6/ios:40,
+                 from /usr/include/c++/6/istream:38,
+                 from /usr/include/c++/6/fstream:38,
+                 from SmfParser.cpp:6:
+/usr/include/c++/6/bits/stl_iterator.h:1119:5: note: candidate: template<class _Iterator> bool std::operator==(const std::move_iterator<_IteratorL>&, const std::move_iterator<_IteratorL>&)
+     operator==(const move_iterator<_Iterator>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_iterator.h:1119:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/string.h:32:0,
+                 from SmfParser.cpp:9:
+SmfParser.cpp:65:13: note:   ‘std::ifstream {aka std::basic_ifstream<char>}’ is not derived from ‘const std::move_iterator<_IteratorL>’
+  if (ofs == NULL) {
+             ^
+In file included from /usr/include/c++/6/string:41:0,
+                 from /usr/include/c++/6/bits/locale_classes.h:40,
+                 from /usr/include/c++/6/bits/ios_base.h:41,
+                 from /usr/include/c++/6/ios:42,
+                 from /usr/include/c++/6/istream:38,
+                 from /usr/include/c++/6/fstream:38,
+                 from SmfParser.cpp:6:
+/usr/include/c++/6/bits/allocator.h:146:5: note: candidate: template<class _T1, class _T2> bool std::operator==(const std::allocator<_CharT>&, const std::allocator<_T2>&)
+     operator==(const allocator<_T1>&, const allocator<_T2>&)
+     ^~~~~~~~
+/usr/include/c++/6/bits/allocator.h:146:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/string.h:32:0,
+                 from SmfParser.cpp:9:
+SmfParser.cpp:65:13: note:   ‘std::ifstream {aka std::basic_ifstream<char>}’ is not derived from ‘const std::allocator<_CharT>’
+  if (ofs == NULL) {
+             ^
+In file included from /usr/include/c++/6/string:41:0,
+                 from /usr/include/c++/6/bits/locale_classes.h:40,
+                 from /usr/include/c++/6/bits/ios_base.h:41,
+                 from /usr/include/c++/6/ios:42,
+                 from /usr/include/c++/6/istream:38,
+                 from /usr/include/c++/6/fstream:38,
+                 from SmfParser.cpp:6:
+/usr/include/c++/6/bits/allocator.h:152:5: note: candidate: template<class _Tp> bool std::operator==(const std::allocator<_CharT>&, const std::allocator<_CharT>&)
+     operator==(const allocator<_Tp>&, const allocator<_Tp>&)
+     ^~~~~~~~
+/usr/include/c++/6/bits/allocator.h:152:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/string.h:32:0,
+                 from SmfParser.cpp:9:
+SmfParser.cpp:65:13: note:   ‘std::ifstream {aka std::basic_ifstream<char>}’ is not derived from ‘const std::allocator<_CharT>’
+  if (ofs == NULL) {
+             ^
+In file included from /usr/include/c++/6/string:52:0,
+                 from /usr/include/c++/6/bits/locale_classes.h:40,
+                 from /usr/include/c++/6/bits/ios_base.h:41,
+                 from /usr/include/c++/6/ios:42,
+                 from /usr/include/c++/6/istream:38,
+                 from /usr/include/c++/6/fstream:38,
+                 from SmfParser.cpp:6:
+/usr/include/c++/6/bits/basic_string.h:5065:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> bool std::operator==(const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&, const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&)
+     operator==(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
+     ^~~~~~~~
+/usr/include/c++/6/bits/basic_string.h:5065:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/string.h:32:0,
+                 from SmfParser.cpp:9:
+SmfParser.cpp:65:13: note:   ‘std::ifstream {aka std::basic_ifstream<char>}’ is not derived from ‘const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>’
+  if (ofs == NULL) {
+             ^
+In file included from /usr/include/c++/6/string:52:0,
+                 from /usr/include/c++/6/bits/locale_classes.h:40,
+                 from /usr/include/c++/6/bits/ios_base.h:41,
+                 from /usr/include/c++/6/ios:42,
+                 from /usr/include/c++/6/istream:38,
+                 from /usr/include/c++/6/fstream:38,
+                 from SmfParser.cpp:6:
+/usr/include/c++/6/bits/basic_string.h:5073:5: note: candidate: template<class _CharT> typename __gnu_cxx::__enable_if<std::__is_char<_Tp>::__value, bool>::__type std::operator==(const std::__cxx11::basic_string<_CharT>&, const std::__cxx11::basic_string<_CharT>&)
+     operator==(const basic_string<_CharT>& __lhs,
+     ^~~~~~~~
+/usr/include/c++/6/bits/basic_string.h:5073:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/string.h:32:0,
+                 from SmfParser.cpp:9:
+SmfParser.cpp:65:13: note:   ‘std::ifstream {aka std::basic_ifstream<char>}’ is not derived from ‘const std::__cxx11::basic_string<_CharT>’
+  if (ofs == NULL) {
+             ^
+In file included from /usr/include/c++/6/string:52:0,
+                 from /usr/include/c++/6/bits/locale_classes.h:40,
+                 from /usr/include/c++/6/bits/ios_base.h:41,
+                 from /usr/include/c++/6/ios:42,
+                 from /usr/include/c++/6/istream:38,
+                 from /usr/include/c++/6/fstream:38,
+                 from SmfParser.cpp:6:
+/usr/include/c++/6/bits/basic_string.h:5087:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> bool std::operator==(const _CharT*, const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&)
+     operator==(const _CharT* __lhs,
+     ^~~~~~~~
+/usr/include/c++/6/bits/basic_string.h:5087:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/string.h:32:0,
+                 from SmfParser.cpp:9:
+SmfParser.cpp:65:13: note:   mismatched types ‘const _CharT*’ and ‘std::basic_ifstream<char>’
+  if (ofs == NULL) {
+             ^
+In file included from /usr/include/c++/6/string:52:0,
+                 from /usr/include/c++/6/bits/locale_classes.h:40,
+                 from /usr/include/c++/6/bits/ios_base.h:41,
+                 from /usr/include/c++/6/ios:42,
+                 from /usr/include/c++/6/istream:38,
+                 from /usr/include/c++/6/fstream:38,
+                 from SmfParser.cpp:6:
+/usr/include/c++/6/bits/basic_string.h:5099:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> bool std::operator==(const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&, const _CharT*)
+     operator==(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
+     ^~~~~~~~
+/usr/include/c++/6/bits/basic_string.h:5099:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/string.h:32:0,
+                 from SmfParser.cpp:9:
+SmfParser.cpp:65:13: note:   ‘std::ifstream {aka std::basic_ifstream<char>}’ is not derived from ‘const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>’
+  if (ofs == NULL) {
+             ^
+In file included from /usr/include/c++/6/bits/ios_base.h:46:0,
+                 from /usr/include/c++/6/ios:42,
+                 from /usr/include/c++/6/istream:38,
+                 from /usr/include/c++/6/fstream:38,
+                 from SmfParser.cpp:6:
+/usr/include/c++/6/system_error:284:3: note: candidate: bool std::operator==(const std::error_code&, const std::error_code&)
+   operator==(const error_code& __lhs, const error_code& __rhs) noexcept
+   ^~~~~~~~
+/usr/include/c++/6/system_error:284:3: note:   no known conversion for argument 1 from ‘std::ifstream {aka std::basic_ifstream<char>}’ to ‘const std::error_code&’
+/usr/include/c++/6/system_error:289:3: note: candidate: bool std::operator==(const std::error_code&, const std::error_condition&)
+   operator==(const error_code& __lhs, const error_condition& __rhs) noexcept
+   ^~~~~~~~
+/usr/include/c++/6/system_error:289:3: note:   no known conversion for argument 1 from ‘std::ifstream {aka std::basic_ifstream<char>}’ to ‘const std::error_code&’
+/usr/include/c++/6/system_error:296:3: note: candidate: bool std::operator==(const std::error_condition&, const std::error_code&)
+   operator==(const error_condition& __lhs, const error_code& __rhs) noexcept
+   ^~~~~~~~
+/usr/include/c++/6/system_error:296:3: note:   no known conversion for argument 1 from ‘std::ifstream {aka std::basic_ifstream<char>}’ to ‘const std::error_condition&’
+/usr/include/c++/6/system_error:303:3: note: candidate: bool std::operator==(const std::error_condition&, const std::error_condition&)
+   operator==(const error_condition& __lhs,
+   ^~~~~~~~
+/usr/include/c++/6/system_error:303:3: note:   no known conversion for argument 1 from ‘std::ifstream {aka std::basic_ifstream<char>}’ to ‘const std::error_condition&’
+In file included from /usr/include/c++/6/bits/locale_facets.h:48:0,
+                 from /usr/include/c++/6/bits/basic_ios.h:37,
+                 from /usr/include/c++/6/ios:44,
+                 from /usr/include/c++/6/istream:38,
+                 from /usr/include/c++/6/fstream:38,
+                 from SmfParser.cpp:6:
+/usr/include/c++/6/bits/streambuf_iterator.h:204:5: note: candidate: template<class _CharT, class _Traits> bool std::operator==(const std::istreambuf_iterator<_CharT, _Traits>&, const std::istreambuf_iterator<_CharT, _Traits>&)
+     operator==(const istreambuf_iterator<_CharT, _Traits>& __a,
+     ^~~~~~~~
+/usr/include/c++/6/bits/streambuf_iterator.h:204:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/string.h:32:0,
+                 from SmfParser.cpp:9:
+SmfParser.cpp:65:13: note:   ‘std::ifstream {aka std::basic_ifstream<char>}’ is not derived from ‘const std::istreambuf_iterator<_CharT, _Traits>’
+  if (ofs == NULL) {
+             ^
+SmfParser.cpp: In member function ‘void SmfParser::parse(int)’:
+SmfParser.cpp:96:10: error: no match for ‘operator==’ (operand types are ‘std::ifstream {aka std::basic_ifstream<char>}’ and ‘int’)
+  if (ofs == NULL) {
+          ^
+SmfParser.cpp:96:10: note: candidate: operator==(int, int) <built-in>
+SmfParser.cpp:96:10: note:   no known conversion for argument 1 from ‘std::ifstream {aka std::basic_ifstream<char>}’ to ‘int’
+In file included from /usr/include/c++/6/iosfwd:40:0,
+                 from /usr/include/c++/6/ios:38,
+                 from /usr/include/c++/6/istream:38,
+                 from /usr/include/c++/6/fstream:38,
+                 from SmfParser.cpp:6:
+/usr/include/c++/6/bits/postypes.h:216:5: note: candidate: template<class _StateT> bool std::operator==(const std::fpos<_StateT>&, const std::fpos<_StateT>&)
+     operator==(const fpos<_StateT>& __lhs, const fpos<_StateT>& __rhs)
+     ^~~~~~~~
+/usr/include/c++/6/bits/postypes.h:216:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/string.h:32:0,
+                 from SmfParser.cpp:9:
+SmfParser.cpp:96:13: note:   ‘std::ifstream {aka std::basic_ifstream<char>}’ is not derived from ‘const std::fpos<_StateT>’
+  if (ofs == NULL) {
+             ^
+In file included from /usr/include/c++/6/bits/stl_algobase.h:64:0,
+                 from /usr/include/c++/6/bits/char_traits.h:39,
+                 from /usr/include/c++/6/ios:40,
+                 from /usr/include/c++/6/istream:38,
+                 from /usr/include/c++/6/fstream:38,
+                 from SmfParser.cpp:6:
+/usr/include/c++/6/bits/stl_pair.h:435:5: note: candidate: template<class _T1, class _T2> constexpr bool std::operator==(const std::pair<_T1, _T2>&, const std::pair<_T1, _T2>&)
+     operator==(const pair<_T1, _T2>& __x, const pair<_T1, _T2>& __y)
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_pair.h:435:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/string.h:32:0,
+                 from SmfParser.cpp:9:
+SmfParser.cpp:96:13: note:   ‘std::ifstream {aka std::basic_ifstream<char>}’ is not derived from ‘const std::pair<_T1, _T2>’
+  if (ofs == NULL) {
+             ^
+In file included from /usr/include/c++/6/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/6/bits/char_traits.h:39,
+                 from /usr/include/c++/6/ios:40,
+                 from /usr/include/c++/6/istream:38,
+                 from /usr/include/c++/6/fstream:38,
+                 from SmfParser.cpp:6:
+/usr/include/c++/6/bits/stl_iterator.h:292:5: note: candidate: template<class _Iterator> bool std::operator==(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_Iterator>&)
+     operator==(const reverse_iterator<_Iterator>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_iterator.h:292:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/string.h:32:0,
+                 from SmfParser.cpp:9:
+SmfParser.cpp:96:13: note:   ‘std::ifstream {aka std::basic_ifstream<char>}’ is not derived from ‘const std::reverse_iterator<_Iterator>’
+  if (ofs == NULL) {
+             ^
+In file included from /usr/include/c++/6/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/6/bits/char_traits.h:39,
+                 from /usr/include/c++/6/ios:40,
+                 from /usr/include/c++/6/istream:38,
+                 from /usr/include/c++/6/fstream:38,
+                 from SmfParser.cpp:6:
+/usr/include/c++/6/bits/stl_iterator.h:349:5: note: candidate: template<class _IteratorL, class _IteratorR> bool std::operator==(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_IteratorR>&)
+     operator==(const reverse_iterator<_IteratorL>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_iterator.h:349:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/string.h:32:0,
+                 from SmfParser.cpp:9:
+SmfParser.cpp:96:13: note:   ‘std::ifstream {aka std::basic_ifstream<char>}’ is not derived from ‘const std::reverse_iterator<_Iterator>’
+  if (ofs == NULL) {
+             ^
+In file included from /usr/include/c++/6/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/6/bits/char_traits.h:39,
+                 from /usr/include/c++/6/ios:40,
+                 from /usr/include/c++/6/istream:38,
+                 from /usr/include/c++/6/fstream:38,
+                 from SmfParser.cpp:6:
+/usr/include/c++/6/bits/stl_iterator.h:1113:5: note: candidate: template<class _IteratorL, class _IteratorR> bool std::operator==(const std::move_iterator<_IteratorL>&, const std::move_iterator<_IteratorR>&)
+     operator==(const move_iterator<_IteratorL>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_iterator.h:1113:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/string.h:32:0,
+                 from SmfParser.cpp:9:
+SmfParser.cpp:96:13: note:   ‘std::ifstream {aka std::basic_ifstream<char>}’ is not derived from ‘const std::move_iterator<_IteratorL>’
+  if (ofs == NULL) {
+             ^
+In file included from /usr/include/c++/6/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/6/bits/char_traits.h:39,
+                 from /usr/include/c++/6/ios:40,
+                 from /usr/include/c++/6/istream:38,
+                 from /usr/include/c++/6/fstream:38,
+                 from SmfParser.cpp:6:
+/usr/include/c++/6/bits/stl_iterator.h:1119:5: note: candidate: template<class _Iterator> bool std::operator==(const std::move_iterator<_IteratorL>&, const std::move_iterator<_IteratorL>&)
+     operator==(const move_iterator<_Iterator>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_iterator.h:1119:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/string.h:32:0,
+                 from SmfParser.cpp:9:
+SmfParser.cpp:96:13: note:   ‘std::ifstream {aka std::basic_ifstream<char>}’ is not derived from ‘const std::move_iterator<_IteratorL>’
+  if (ofs == NULL) {
+             ^
+In file included from /usr/include/c++/6/string:41:0,
+                 from /usr/include/c++/6/bits/locale_classes.h:40,
+                 from /usr/include/c++/6/bits/ios_base.h:41,
+                 from /usr/include/c++/6/ios:42,
+                 from /usr/include/c++/6/istream:38,
+                 from /usr/include/c++/6/fstream:38,
+                 from SmfParser.cpp:6:
+/usr/include/c++/6/bits/allocator.h:146:5: note: candidate: template<class _T1, class _T2> bool std::operator==(const std::allocator<_CharT>&, const std::allocator<_T2>&)
+     operator==(const allocator<_T1>&, const allocator<_T2>&)
+     ^~~~~~~~
+/usr/include/c++/6/bits/allocator.h:146:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/string.h:32:0,
+                 from SmfParser.cpp:9:
+SmfParser.cpp:96:13: note:   ‘std::ifstream {aka std::basic_ifstream<char>}’ is not derived from ‘const std::allocator<_CharT>’
+  if (ofs == NULL) {
+             ^
+In file included from /usr/include/c++/6/string:41:0,
+                 from /usr/include/c++/6/bits/locale_classes.h:40,
+                 from /usr/include/c++/6/bits/ios_base.h:41,
+                 from /usr/include/c++/6/ios:42,
+                 from /usr/include/c++/6/istream:38,
+                 from /usr/include/c++/6/fstream:38,
+                 from SmfParser.cpp:6:
+/usr/include/c++/6/bits/allocator.h:152:5: note: candidate: template<class _Tp> bool std::operator==(const std::allocator<_CharT>&, const std::allocator<_CharT>&)
+     operator==(const allocator<_Tp>&, const allocator<_Tp>&)
+     ^~~~~~~~
+/usr/include/c++/6/bits/allocator.h:152:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/string.h:32:0,
+                 from SmfParser.cpp:9:
+SmfParser.cpp:96:13: note:   ‘std::ifstream {aka std::basic_ifstream<char>}’ is not derived from ‘const std::allocator<_CharT>’
+  if (ofs == NULL) {
+             ^
+In file included from /usr/include/c++/6/string:52:0,
+                 from /usr/include/c++/6/bits/locale_classes.h:40,
+                 from /usr/include/c++/6/bits/ios_base.h:41,
+                 from /usr/include/c++/6/ios:42,
+                 from /usr/include/c++/6/istream:38,
+                 from /usr/include/c++/6/fstream:38,
+                 from SmfParser.cpp:6:
+/usr/include/c++/6/bits/basic_string.h:5065:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> bool std::operator==(const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&, const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&)
+     operator==(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
+     ^~~~~~~~
+/usr/include/c++/6/bits/basic_string.h:5065:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/string.h:32:0,
+                 from SmfParser.cpp:9:
+SmfParser.cpp:96:13: note:   ‘std::ifstream {aka std::basic_ifstream<char>}’ is not derived from ‘const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>’
+  if (ofs == NULL) {
+             ^
+In file included from /usr/include/c++/6/string:52:0,
+                 from /usr/include/c++/6/bits/locale_classes.h:40,
+                 from /usr/include/c++/6/bits/ios_base.h:41,
+                 from /usr/include/c++/6/ios:42,
+                 from /usr/include/c++/6/istream:38,
+                 from /usr/include/c++/6/fstream:38,
+                 from SmfParser.cpp:6:
+/usr/include/c++/6/bits/basic_string.h:5073:5: note: candidate: template<class _CharT> typename __gnu_cxx::__enable_if<std::__is_char<_Tp>::__value, bool>::__type std::operator==(const std::__cxx11::basic_string<_CharT>&, const std::__cxx11::basic_string<_CharT>&)
+     operator==(const basic_string<_CharT>& __lhs,
+     ^~~~~~~~
+/usr/include/c++/6/bits/basic_string.h:5073:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/string.h:32:0,
+                 from SmfParser.cpp:9:
+SmfParser.cpp:96:13: note:   ‘std::ifstream {aka std::basic_ifstream<char>}’ is not derived from ‘const std::__cxx11::basic_string<_CharT>’
+  if (ofs == NULL) {
+             ^
+In file included from /usr/include/c++/6/string:52:0,
+                 from /usr/include/c++/6/bits/locale_classes.h:40,
+                 from /usr/include/c++/6/bits/ios_base.h:41,
+                 from /usr/include/c++/6/ios:42,
+                 from /usr/include/c++/6/istream:38,
+                 from /usr/include/c++/6/fstream:38,
+                 from SmfParser.cpp:6:
+/usr/include/c++/6/bits/basic_string.h:5087:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> bool std::operator==(const _CharT*, const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&)
+     operator==(const _CharT* __lhs,
+     ^~~~~~~~
+/usr/include/c++/6/bits/basic_string.h:5087:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/string.h:32:0,
+                 from SmfParser.cpp:9:
+SmfParser.cpp:96:13: note:   mismatched types ‘const _CharT*’ and ‘std::basic_ifstream<char>’
+  if (ofs == NULL) {
+             ^
+In file included from /usr/include/c++/6/string:52:0,
+                 from /usr/include/c++/6/bits/locale_classes.h:40,
+                 from /usr/include/c++/6/bits/ios_base.h:41,
+                 from /usr/include/c++/6/ios:42,
+                 from /usr/include/c++/6/istream:38,
+                 from /usr/include/c++/6/fstream:38,
+                 from SmfParser.cpp:6:
+/usr/include/c++/6/bits/basic_string.h:5099:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> bool std::operator==(const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&, const _CharT*)
+     operator==(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
+     ^~~~~~~~
+/usr/include/c++/6/bits/basic_string.h:5099:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/string.h:32:0,
+                 from SmfParser.cpp:9:
+SmfParser.cpp:96:13: note:   ‘std::ifstream {aka std::basic_ifstream<char>}’ is not derived from ‘const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>’
+  if (ofs == NULL) {
+             ^
+In file included from /usr/include/c++/6/bits/ios_base.h:46:0,
+                 from /usr/include/c++/6/ios:42,
+                 from /usr/include/c++/6/istream:38,
+                 from /usr/include/c++/6/fstream:38,
+                 from SmfParser.cpp:6:
+/usr/include/c++/6/system_error:284:3: note: candidate: bool std::operator==(const std::error_code&, const std::error_code&)
+   operator==(const error_code& __lhs, const error_code& __rhs) noexcept
+   ^~~~~~~~
+/usr/include/c++/6/system_error:284:3: note:   no known conversion for argument 1 from ‘std::ifstream {aka std::basic_ifstream<char>}’ to ‘const std::error_code&’
+/usr/include/c++/6/system_error:289:3: note: candidate: bool std::operator==(const std::error_code&, const std::error_condition&)
+   operator==(const error_code& __lhs, const error_condition& __rhs) noexcept
+   ^~~~~~~~
+/usr/include/c++/6/system_error:289:3: note:   no known conversion for argument 1 from ‘std::ifstream {aka std::basic_ifstream<char>}’ to ‘const std::error_code&’
+/usr/include/c++/6/system_error:296:3: note: candidate: bool std::operator==(const std::error_condition&, const std::error_code&)
+   operator==(const error_condition& __lhs, const error_code& __rhs) noexcept
+   ^~~~~~~~
+/usr/include/c++/6/system_error:296:3: note:   no known conversion for argument 1 from ‘std::ifstream {aka std::basic_ifstream<char>}’ to ‘const std::error_condition&’
+/usr/include/c++/6/system_error:303:3: note: candidate: bool std::operator==(const std::error_condition&, const std::error_condition&)
+   operator==(const error_condition& __lhs,
+   ^~~~~~~~
+/usr/include/c++/6/system_error:303:3: note:   no known conversion for argument 1 from ‘std::ifstream {aka std::basic_ifstream<char>}’ to ‘const std::error_condition&’
+In file included from /usr/include/c++/6/bits/locale_facets.h:48:0,
+                 from /usr/include/c++/6/bits/basic_ios.h:37,
+                 from /usr/include/c++/6/ios:44,
+                 from /usr/include/c++/6/istream:38,
+                 from /usr/include/c++/6/fstream:38,
+                 from SmfParser.cpp:6:
+/usr/include/c++/6/bits/streambuf_iterator.h:204:5: note: candidate: template<class _CharT, class _Traits> bool std::operator==(const std::istreambuf_iterator<_CharT, _Traits>&, const std::istreambuf_iterator<_CharT, _Traits>&)
+     operator==(const istreambuf_iterator<_CharT, _Traits>& __a,
+     ^~~~~~~~
+/usr/include/c++/6/bits/streambuf_iterator.h:204:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/string.h:32:0,
+                 from SmfParser.cpp:9:
+SmfParser.cpp:96:13: note:   ‘std::ifstream {aka std::basic_ifstream<char>}’ is not derived from ‘const std::istreambuf_iterator<_CharT, _Traits>’
+  if (ofs == NULL) {
+             ^

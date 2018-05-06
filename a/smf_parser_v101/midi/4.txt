@@ -1,0 +1,4 @@
+smf_parser v1.01
+Created by Joan Quintana Compte (joanillo)
+Licensed under GPL v.3
+Loading SMF file failed.
