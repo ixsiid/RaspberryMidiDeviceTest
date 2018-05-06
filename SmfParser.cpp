@@ -10,13 +10,7 @@
 
 using namespace std;
 
-typedef struct ch_event { //estructura per inquivir els channel events
-   char *ch_event_type; 
-   int ch_event_channel;
-	int par1;
-	char *desc_par1;
-	int par2;
-} CH_EVENT_STRUCT;
+typedef struct ch_event CH_EVENT_STRUCT;
 
 bool StringIsEqual(char*, char*);
 void mostrarBits ( long int );
@@ -36,7 +30,7 @@ int num_time_signature = 4,den_time_signature = 4; // idem time_signature_has_ch
 double num_bars; // idem time_signature_has_changed
 int key = 0, scale = 0;
 
-SmfParser::SmfParser (char *smffile) {
+SmfParser::SmfParser (const char *smffile) {
 	this->smffile = smffile;
 }
 
@@ -91,6 +85,7 @@ void SmfParser::parse(int output) {
 	int max_delta_time_acumulat = 0; //Serveix per calcular el número de compassos. Pot ser que no totes les pistes tinguin el mateix tamany.
 
 	CH_EVENT_STRUCT ChEvent2;
+	std::vector<CH_EVENT_STRUCT> events{};
 		
 	ofs.open( this->smffile, ios::in | ios::binary );
 	if (!ofs) {
@@ -134,9 +129,9 @@ void SmfParser::parse(int output) {
 	}
 	
 	for(;;) {
-
 		//track chunk - chunk ID 	"MTrk" (0x4D54726B)
-		cad = new char[4];
+		cad = new char[5];
+		cad[4] = '\0';
 		ofs.read (cad, 4);
 		if (ofs.eof()) break;
 		
@@ -147,7 +142,8 @@ void SmfParser::parse(int output) {
 			if (output) printf("track #%d\n",num_tracks_detectats);
 			i=i+4;
 			//chunk size
-			cad = new char[4];
+			cad = new char[5];
+			cad[4] = '\0';
 			ofs.read (cad, 4);
 			//char és 1 byte, i com es pot veure amb el hex2, no és el mateix considerar 8 bits amb signe (char o signed char, que agafa valor negatius), que 8 bits sense signe (unsigned char, 0-255)
 			track_size= (unsigned long int)((unsigned char)cad[0]*256*256*256+(unsigned char)cad[1]*256*256+(unsigned char)cad[2]*256+(unsigned char)cad[3]);
@@ -251,6 +247,8 @@ void SmfParser::parse(int output) {
 				i += length;
 				ChEvent2.ch_event_type=ChEvent.ch_event_type;
 				ChEvent2.ch_event_channel=ChEvent.ch_event_channel;
+				ChEvent.acumulate_time = delta_time_acumulat;
+				events.push_back(ChEvent);
 			} 
 			// MIDI streams support a rudimentary form of compression in which
 			// successive events with the same “status” (event type and channel) may
@@ -268,6 +266,8 @@ void SmfParser::parse(int output) {
 				if (output && (ChEvent.ch_event_type=="Controller")) printf("(%s) ",ChEvent.desc_par1);
 				if (output) printf("par2=%d\n",ChEvent.par2);
 				i += length;
+				ChEvent.acumulate_time = delta_time_acumulat;
+				events.push_back(ChEvent);
 			} else {
 				event_type==0;
 				ChEvent2.ch_event_type=(char *)"";
@@ -287,7 +287,8 @@ void SmfParser::parse(int output) {
 	if (::time_signature_has_changed <=1 ) ::num_bars = ((double)max_delta_time_acumulat) / ((double)ticks_per_beat * (double)::num_time_signature);
 	this->num_bars = ::num_bars;	
 	this->time_signature_has_changed = ::time_signature_has_changed;
-	this->tempo_has_changed = ::tempo_has_changed;		
+	this->tempo_has_changed = ::tempo_has_changed;
+	this->events = events;
 				
 	ofs.close();
 }
@@ -316,12 +317,14 @@ void SmfParser::abstract() {
 
 bool StringIsEqual(char* Str1, char* Str2) // Compare two strings and tell us if they are equal.
 {
- if(strlen(Str1) != strlen(Str2))
-   return false;
- for(int i = 0; i < strlen(Str2); i++)
-   if(Str1[i] != Str2[i])
-    return false;
- return true;
+	if(strlen(Str1) != strlen(Str2))
+		return false;
+
+	for(int i = 0; i < strlen(Str2); i++)
+		if(Str1[i] != Str2[i])
+			return false;
+
+	return true;
 }
 
 void mostrarBits ( long int decimal ) //per fer proves
@@ -542,8 +545,9 @@ CH_EVENT_STRUCT agafar_info_channel (int length) {
 		cad=(char *)"";
 	}
 
-	ChEvent.ch_event_type=cad;
-	ChEvent.ch_event_channel=channel_number;
+	ChEvent.event_type = channel_event_type;
+	ChEvent.ch_event_type = cad;
+	ChEvent.ch_event_channel = channel_number;
 
 	if (channel_event_type==11) ChEvent.desc_par1=agafar_info_controller (ChEvent.par1);
 	return (ChEvent);
