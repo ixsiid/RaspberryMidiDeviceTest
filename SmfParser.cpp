@@ -40,11 +40,11 @@ SmfParser::~SmfParser() {}
 // implementem els mètodes
 void SmfParser::printcredits() {
 	char SOFTWARE[] = "smf_parser library";
-	char DATE[] = "January";
-	char YEAR[] = "2012";
+//	char DATE[] = "January";
+//	char YEAR[] = "2012";
 	char AUTHOR[] = "Joan Quintana Compte (joanillo)";
 	char LICENSE[] = "GPL v.3";
-	char WEB[] = "joanqc arroba gmail.com - www.joanillo.org";
+//	char WEB[] = "joanqc arroba gmail.com - www.joanillo.org";
 	char VERSION[] = "v1.01";
 	
 	cout << SOFTWARE << " " << VERSION << "\n"
@@ -75,7 +75,7 @@ void SmfParser::parse(int output) {
 	char *cad; //cad serà de longitud variable (és un punter a caràcters)
 	int num_tracks_detectats = 0;
 	unsigned long int track_size = 0;
-	int event_type=0; //1: channel_event; 2: meta_event; 3: sysex_event
+//	int event_type=0; //1: channel_event; 2: meta_event; 3: sysex_event
 	int metaevent_type;
 	int length = 0;
 	char *res;
@@ -162,7 +162,7 @@ void SmfParser::parse(int output) {
 				
 		//detecció Meta Event (0xFF)
 		if ((int)rec==255) { //he trobat un 0xFF
-			event_type=2;
+//			event_type=2;
 			ChEvent2.ch_event_type=(char *)"";
 			ChEvent2.ch_event_channel=0;
 			ofs.read( (char *) &rec, sizeof(char) );
@@ -190,7 +190,7 @@ void SmfParser::parse(int output) {
 		}
 		//detecció SysEx Event (0xF0 0xF7).
 		else if ((int)rec==240 || (int)rec==247) { //he trobat un 0xF0 o 0xF7
-			event_type=3;
+//			event_type=3;
 			ChEvent2.ch_event_type=(char *)"";
 			ChEvent2.ch_event_channel=0;
 			printf("SysEx Event. ");
@@ -237,12 +237,12 @@ void SmfParser::parse(int output) {
 			//recuperar la posició anterior
 			ofs.seekg( (i)* sizeof(char),std::ofstream::beg );
 			if ((int)rec >= 128 && (int)rec <= 239) {
-				event_type==1; //seguim endavant per extreure la informació d'aquest event
+//				event_type == 1; //seguim endavant per extreure la informació d'aquest event
 				CH_EVENT_STRUCT ChEvent;
 				length=3;
 				ChEvent = agafar_info_channel(length);
 				if (output) printf("%s ch=%d par1=%d ",ChEvent.ch_event_type,ChEvent.ch_event_channel,ChEvent.par1);
-				if (output && (ChEvent.ch_event_type=="Controller")) printf("(%s) ",ChEvent.desc_par1);
+//				if (output && (ChEvent.ch_event_type=="Controller")) printf("(%s) ",ChEvent.desc_par1);
 				if (output) printf("par2=%d\n",ChEvent.par2);
 				i += length;
 				ChEvent2.ch_event_type=ChEvent.ch_event_type;
@@ -256,20 +256,20 @@ void SmfParser::parse(int output) {
 			// Es fa necessari la declaració de ChEvent2 per guardar el valor de l'anterior event.
 			else if ((int)rec!=255 && (int)rec!=240 && (int)rec!=247) { //n és metaevent ni sysex, per tant ha de continuar sent un channel event
 			//else if (ChEvent2.ch_event_type!="" && ChEvent2.ch_event_channel>0) { //o bé
-				event_type==1; //seguim endavant per extreure la informació d'aquest event
+//				event_type==1; //seguim endavant per extreure la informació d'aquest event
 				CH_EVENT_STRUCT ChEvent;
 				length=2;
 				ChEvent = agafar_info_channel(length);
 				ChEvent.ch_event_type=ChEvent2.ch_event_type;
 				ChEvent.ch_event_channel=ChEvent2.ch_event_channel;
 				if (output) printf("%s ch=%d par1=%d ",ChEvent.ch_event_type,ChEvent.ch_event_channel,ChEvent.par1);
-				if (output && (ChEvent.ch_event_type=="Controller")) printf("(%s) ",ChEvent.desc_par1);
+//				if (output && (ChEvent.ch_event_type=="Controller")) printf("(%s) ",ChEvent.desc_par1);
 				if (output) printf("par2=%d\n",ChEvent.par2);
 				i += length;
 				ChEvent.acumulate_time = delta_time_acumulat;
 				events.push_back(ChEvent);
 			} else {
-				event_type==0;
+//				event_type==0;
 				ChEvent2.ch_event_type=(char *)"";
 				ChEvent2.ch_event_channel=0;
 				if (output) printf("\n");
@@ -320,7 +320,7 @@ bool StringIsEqual(char* Str1, char* Str2) // Compare two strings and tell us if
 	if(strlen(Str1) != strlen(Str2))
 		return false;
 
-	for(int i = 0; i < strlen(Str2); i++)
+	for(unsigned int i = 0; i < strlen(Str2); i++)
 		if(Str1[i] != Str2[i])
 			return false;
 
