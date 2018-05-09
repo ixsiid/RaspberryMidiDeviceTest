@@ -18,10 +18,41 @@ static std::string targetIn  = std::string("microKEY");
 
 void mycallback(double deltatime, std::vector<unsigned char> *message, void *userData)
 {
+	/**
+		48 -> base De
+
+		Target De -> 0, De# -> 1, Re -> 2, .... Si -> 11
+		below Target is 1, 3, 6, 8, 10, only black key.
+	*/
+	const unsigned char target[5] = { 1, 3, 6, 8, 10 };
+
 	if ( message->size() > 0 ) {
 //		std::cout << "stamp = " << deltatime << std::endl;
 //		printf("type = %d\n", (*message)[0]);
 //		(*message)[1] = 64;
+
+		printf("%d -> ", (*message)[1]);
+
+		int key = (*message)[1] / 12;
+		int a   = (*message)[1] % 12;
+		if (a > 10) a -= 5;
+		else if (a > 8) a -= 4;
+		else if (a > 6) a -= 3;
+		else if (a > 3) a -= 2;
+		else if (a > 1) a -= 1;
+		int numWhite = (key - 60 / 12) * 7 + a;
+
+		int tOct = sizeof(target);
+		int tKey = numWhite / tOct;
+		int tA   = numWhite % tOct;
+		if (tA < 0) {
+			tA += sizeof(target);
+			tKey -= 1;
+		}
+
+		(*message)[1] = 60 + (tKey * 12) + target[tA];
+
+		printf("%d\n", (*message)[1]);
 		((RtMidiOut *)userData)->sendMessage(message);
 	}
 }
@@ -92,6 +123,66 @@ typedef struct _Smf {
 	int count;
 } Smf;
 
+
+typedef struct _Key {
+	bool major;
+	int  diff; // count from ハ(長短)調
+} Key;
+
+std::ostream & operator<<(std::ostream & Str, const Key & key) {
+	std::string majorName[12] = {
+		"ハ長調", "ト長調", "ニ長調", "イ長調", "ホ長調", "ロ長調",
+		"嬰ヘ長調", "嬰ハ長調", "変イ長調", "変ホ長調", "変ロ長調", "ヘ長調"
+	};
+	std::string minorName[12] = {
+		"ハ短調", "ト短調", "ニ短調", "イ短調", "ホ短調", "ロ短調",
+		"嬰ヘ短調", "嬰ハ短調", "嬰ト短調", "嬰二短調", "変ロ短調", "ヘ短調"
+	};
+
+	printf("Key is %s key, diff %d; %s", 
+		key.major ? "major" : "minor",
+		key.diff, 
+		(key.major ? majorName[key.diff] : minorName[key.diff]).c_str()
+	);
+
+	return Str;
+}
+
+Key get_key(int * noteCount, int * startNoteCount = NULL, bool major = true) {
+	Key result = { major, 0 };
+	int score = -1;
+
+	int baseKey [12] = { 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1 };
+	int majorKey[12] = { 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0 };
+	int minorKey[12] = { 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0 };
+
+	for (int d=0; d<12; d++) {
+		int _score = 0;
+		for (int x=0; x<128; x++) {
+			_score += noteCount[x] * baseKey[(x + d) % 12];
+		}
+		if (_score > score) {
+			score = _score;
+			result.diff = d;
+		}
+	}
+
+	if (startNoteCount != NULL) {
+		int majorScore = 0;
+		int minorScore = 0;
+		for (int x=0; x<128; x++) {
+			majorScore += startNoteCount[x] * majorKey[(x + result.diff) % 12];
+			minorScore += startNoteCount[x] * minorKey[(x + result.diff) % 12];
+		}
+		if (majorScore < minorScore) major = false;
+	}
+
+	if (!(result.major = major)) {
+		result.diff = (result.diff + 3) % 12;
+	}
+
+	return result;
+}
 
 int main()
 {
@@ -168,9 +259,21 @@ int main()
 
 	Smf * play = &(files[0]);
 
+	int noteCount[128];
+	int startNoteCount[128];
+	for (int i=0; i<128; i++) startNoteCount[i] = noteCount[i] = 0;
+	for (int i=0; i<play->count; i++) {
+		if (i < 7) startNoteCount[play->notes[i].message[1]]++;
+		noteCount[play->notes[i].message[1]]++;
+	}
+	Key k = get_key(noteCount, startNoteCount);
+	std::cout << k << std::endl;
+
+
 	// Don't ignore sysex, timing, or active sensing messages.
 	midiin->ignoreTypes( false, false, false );
 	std::cout << "\nReading MIDI input ... press <enter> to quit.\n";
+
 
 	std::thread thr([](Smf * smf, RtMidiOut * midi) {
 		std::cout << "notes addr: " << smf->notes << std::endl;
