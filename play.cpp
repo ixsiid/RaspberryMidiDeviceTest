@@ -7,30 +7,7 @@
 #include <unistd.h>
 #include "RtMidi.h"
 #include "SmfParser.hpp"
-
-static std::string outClientName = std::string("Multi Midi Output Client");
-static std::string outPortName = std::string("Multi Midi Output Port");
-
-static std::string targetOut = std::string("FLUID");
-static std::string targetIn  = std::string("microKEY");
-
-void listMidiPort (std::string outPortName, int * outPortIndex) {
-	try {
-		RtMidiOut *midiout = new RtMidiOut();
-		unsigned int nPorts = midiout->getPortCount();
-		for (unsigned int i=0; i<nPorts; i++) {
-			std::string portName = midiout->getPortName(i);
-			std::string::size_type loc = portName.find(outPortName, 0);
-			if (loc != std::string::npos) {
-				*outPortIndex = i;
-				std::cout << "found output: " << i << std::endl;
-				break;
-			}
-		}
-	} catch (RtMidiError &error) {
-		error.printMessage();
-	}
-}
+#include "midi.hpp"
 
 typedef struct _Note {
 	int time;
@@ -128,18 +105,12 @@ Key get_key(int * noteCount, int * startNoteCount = NULL, bool major = true) {
 
 int main()
 {
-	int outPort = 0;
-	listMidiPort(targetOut, &outPort);
-	
-
-	RtMidiOut *midiout = new RtMidiOut(RtMidi::UNSPECIFIED, outClientName);
-	unsigned int outPorts = midiout->getPortCount();
-	if (outPorts == 0) {
-		std::cout << "No out ports available!\n";
-		delete midiout;
-		return 0;
+	MidiInterface * port = new MidiInterface("Multi");
+	RtMidiOut *midiout = (RtMidiOut *)port->connect("FLUID", MidiDirection::IN);
+	if (midiout == NULL) {
+		std::cout << "Not found target port name" << std::endl;
+		exit(1);
 	}
-	midiout->openPort(outPort, outPortName);
 
 	//
 	std::vector<Smf> files = {
@@ -278,6 +249,7 @@ int main()
 	}
 
 	delete midiout;
+	delete port;
 	return 0;
 }
 
