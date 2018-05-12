@@ -9,8 +9,8 @@ RtMidi * MidiInterface::connect(std::string target, MidiDirection direction) {
 	char clientName[256] = "";
 	sprintf(clientName, "%s Midi %s Client", name, direction == MidiDirection::IN ? "Input" : "Output");
 	RtMidi * midi = direction == MidiDirection::IN ? 
-		(RtMidi *)new RtMidiOut(RtMidi::UNSPECIFIED, clientName) :
-		(RtMidi *)new RtMidiIn (RtMidi::UNSPECIFIED, clientName);
+		(RtMidi *)new RtMidiIn (RtMidi::UNSPECIFIED, clientName) :
+		(RtMidi *)new RtMidiOut(RtMidi::UNSPECIFIED, clientName);
 
 	unsigned int portCount = midi->getPortCount();
 	for (unsigned int i=0; i<portCount; i++) {

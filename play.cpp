@@ -106,7 +106,7 @@ Key get_key(int * noteCount, int * startNoteCount = NULL, bool major = true) {
 int main()
 {
 	MidiInterface * port = new MidiInterface("Multi");
-	RtMidiOut *midiout = (RtMidiOut *)port->connect("FLUID", MidiDirection::IN);
+	RtMidiOut *midiout = (RtMidiOut *)port->connect("FLUID", MidiDirection::OUT);
 	if (midiout == NULL) {
 		std::cout << "Not found target port name" << std::endl;
 		exit(1);
