@@ -1,0 +1,15 @@
+UseTab: Always
+IndentWidth: 2
+TabWidth: 3
+AlignConsecutiveAssignments: true
+AlignOperands: true
+AlignTrailingComments: true
+AllowShortBlocksOnASingleLine: true
+AllowShortIfStatementsOnASingleLine: true
+AlwaysBreakBeforeMultilineStrings: false
+BreakBeforeBraces: Attach
+ColumnLimit: 0
+
+
+
+IndentCaseLabels: false
