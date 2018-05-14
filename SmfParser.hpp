@@ -1,3 +1,5 @@
+#pragma once
+
 //SmfParser.hpp
 
 //using namespace std;

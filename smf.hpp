@@ -1,12 +1,7 @@
-#include <iostream>
-#include <cstdlib>
-#include <smf.h>
-#include <algorithm>
+#pragma once
+
 #include <chrono>
-#include <thread>
-#include <unistd.h>
 #include "RtMidi.h"
-#include "SmfParser.hpp"
 #include "midi.hpp"
 
 typedef struct _Note
@@ -16,22 +11,26 @@ typedef struct _Note
 } Note;
 
 enum struct SmfStatus {
-	Start, Play, Stop, Pause,
+	START, PLAY, STOP, PAUSE,
 };
 
-class Smf
-{
- private:
+using std::chrono::system_clock;
+class Smf {
+private:
 	const char * filepath;
 	Note * notes;
 	Note * endpoint;
 	SmfStatus status;
-	std::chrono::time_point startTime;
+	system_clock::time_point startTime;
+	RtMidiOut * midi;
 
- public:
+public:
 	Smf(const char * filepath, RtMidiOut * midi);
-	bool play(RtMidiOut * midi);
+	bool start();
+	bool play();
 	bool pause();
 	bool stop();
 	bool seek(int milliseconds);
 };
+
+

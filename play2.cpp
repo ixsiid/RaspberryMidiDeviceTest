@@ -14,7 +14,7 @@ int main() {
   }
 
   Smf *smf = new Smf("magic_music.mid", midiout);
-  smf.start();
+  smf->start();
 
   while (true) {
 	 std::cout << "\r> ";
@@ -22,11 +22,11 @@ int main() {
 
 	 int c = std::cin.get();
 	 if (c == 'p') {
-		smf.play();
+		smf->play();
 	 } else if (c == 's') {
-		smf.pause();
+		smf->pause();
 	 } else if (c == 'r') {
-		smf.seek(0);
+		smf->seek(0);
 	 } else if (c == 'q' || std::cin.eof()) {
 		break;
 	 }
