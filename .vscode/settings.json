@@ -1,0 +1,11 @@
+{
+	"files.associations": {
+		"*.mop": "modelica",
+		"ostream": "cpp",
+		"xlocale": "cpp",
+		"xstring": "cpp",
+		"xutility": "cpp",
+		"chrono": "cpp",
+		"functional": "cpp"
+	}
+}
