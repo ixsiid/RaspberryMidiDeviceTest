@@ -20,6 +20,7 @@ private:
 	const char * filepath;
 	Note * notes;
 	Note * endpoint;
+	Note * current;
 	SmfStatus status;
 	system_clock::time_point startTime;
 	RtMidiOut * midi;

@@ -85,7 +85,7 @@ bool Smf::start() {
 	if (status != SmfStatus::STOP) return false;
 
 	std::thread thr([&](RtMidiOut *midi, Note *begin, Note *end) {
-		Note *current	= begin;
+		current = begin;
 		int pausedTime = -1;
 
 		long j = 0;
@@ -119,6 +119,7 @@ bool Smf::start() {
 				if (current->time <= acumulate) {
 					if (status == SmfStatus::PLAY) {
 						midi->sendMessage(current->message, 3);
+						printf("send: %d %d %d\n", current->message[0], current->message[1], current->message[2]);
 					}
 					current++;
 				} else {
@@ -155,7 +156,13 @@ bool Smf::stop() {
 	return true;
 }
 
-bool Smf::seek(int milliseconds) {
+bool Smf::seek(int _milliseconds) {
+	startTime = std::chrono::system_clock::now() - std::chrono::milliseconds(_milliseconds);
+	current = notes;
+	while (current < endpoint) {
+		if (current->time >= _milliseconds) return true;
+		current++; 
+	}
 	return false;
 }
 
